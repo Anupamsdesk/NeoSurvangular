@@ -26,7 +26,7 @@ function($routeProvider) {
         if (!value){
             value = 12;
         }
-        if (text.length>value)
+        if (text && text.length>value)
             return text.substring(0, value)+"...";
         else return text;
     };

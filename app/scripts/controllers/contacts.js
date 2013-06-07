@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('node4jsHttpApp')
-  .controller('ContactsCtrl', ['$scope','DataService', function ($scope, DataService) {
-    $scope.contacts = DataService.getAllContacts();
-    console.log($scope.contacts);
+  .controller('ContactsCtrl', ['$scope','Models', function ($scope, Models) {
+    $scope.contacts = Models.Contact.getAll();
+    
   }]);

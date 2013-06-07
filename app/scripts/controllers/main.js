@@ -35,7 +35,7 @@ function MainCtrl($scope, $location, DataService, Models) {
         console.log('view '+id+' was clicked');
         $scope.showSurveyInfo=true;     
         $scope.selectedSurvey = _.find(surveysMaster,function(value){return (value.id===id);})
-        var evt = DataService.getQuestionsWithAnswerCount(id);
+        var evt = Models.Question.getAllForSurvey(id);// DataService.getQuestionsWithAnswerCount(id);
         evt.then(function(data){
            $scope.selectedSurvey.questions = data; 
            $scope.selectedSurvey.totalUsers = _.max(_.pluck(data,"count"),function(value){return value;});
@@ -78,19 +78,15 @@ function MainCtrl($scope, $location, DataService, Models) {
         return objects;
     };
     function init() {
-        evt = DataService.getAllSurveys();
-        evt.then(loadSurveys);
-    };
-
-    function loadSurveys (data) {
-        if (data.errors.length > 0) {
-            handleError(data);
-        } else {
-            surveysMaster = parseSurveys(data.results[0].data);
+        Models.Survey.getAll().then(function (data){
+            surveysMaster = data;
             $scope.surveys = _.clone(surveysMaster);
-        }
+        })
+        
+        
     };
 
+    
     $scope.show = function(index) {
         selectedIndex = index;
     };
