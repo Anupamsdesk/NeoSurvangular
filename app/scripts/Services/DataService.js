@@ -4,8 +4,8 @@ angular.module('node4jsHttpApp')
 .value('version','0.0.1')
 .value('tag','"A higly configurable and robust Survey Tool"')
 
-.factory('DataService',['$http','$q',function ($http, $q){
-    var getAllContacts, getAllSurveys, neo4jRequest,getQuestions,getQuestionsWithAnswerCount,
+.factory('GraphDBService',['$http','$q',function ($http, $q){
+    var getAllContacts, getAllSurveys, neo4jRequest,getQuestions,getQuestionsWithAnswerCount,getById,
     handleError;
     
     
@@ -32,6 +32,23 @@ angular.module('node4jsHttpApp')
         
         return obj;
     };
+    
+    getById = function(id){
+        var queryStatements = [{'statement': 'match n where n.id = "'+id+'" return n'}],
+            deferred = $q.defer(),
+            promise = neo4jRequest(queryStatements);
+         promise.then(function (response){
+            if (response.errors.length>0){
+                handleError(response);
+                deferred.reject('INVALID REQUEST!');
+            }else{
+                deferred.resolve(response.results[0].data);
+            }
+        });   
+        return deferred.promise;
+    };
+    
+    
     
     getAllSurveys = function(){
         var queryStatements = [{'statement': 'match n where n.id =~ "(?i)S.*" return n'}],
@@ -66,7 +83,8 @@ angular.module('node4jsHttpApp')
         getAllContacts: getAllContacts,
         getAllSurveys: getAllSurveys,
         getQuestions: getQuestions,
-        getQuestionsWithAnswerCount: getQuestionsWithAnswerCount
+        getQuestionsWithAnswerCount: getQuestionsWithAnswerCount,
+        getById: getById
     };
             
     handleError = function(errorObj) {

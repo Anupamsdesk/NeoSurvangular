@@ -13,7 +13,7 @@ function($routeProvider) {
         controller : 'ContactsCtrl'
     }).when('/editSurvey/:surveyId', {
         templateUrl : 'views/surveyEdit.html',
-        //controller : 'ContactsCtrl'
+        controller : 'SurveyCtrl'
     }).when('/participateSurvey/:surveyId', {
         templateUrl : 'views/surveyParticipate.html',
         //controller : 'ContactsCtrl'

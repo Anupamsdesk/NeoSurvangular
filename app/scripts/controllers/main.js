@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('node4jsHttpApp').controller('MainCtrl', ['$scope','$location', 'DataService', 'Models', MainCtrl]).controller('AboutCtrl', ['$scope',
+angular.module('node4jsHttpApp').controller('MainCtrl', ['$scope','$location', 'Models', MainCtrl]).controller('AboutCtrl', ['$scope',
 function($scope) {
     $scope.awesomeThings = ['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Neo4j', 'Yeomen'];
 }]);
 
-function MainCtrl($scope, $location, DataService, Models) {
+function MainCtrl($scope, $location, Models) {
     var evt, mydata, node, errorObj, handleError, surveysMaster, sortFields, selectedIndex;
     selectedIndex = 0;
     sortFields = ['title', 'openDate', 'closeDate'];

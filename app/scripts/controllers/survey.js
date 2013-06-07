@@ -1,8 +1,15 @@
 'use strict';
 
-angular.module('node4jsHttpApp').controller('SurveyCtrl', ['$scope','$location', 'DataService', 'Models', SurveyCtrl]);
+angular.module('node4jsHttpApp').controller('SurveyCtrl', ['$scope','$location', 'Models','$routeParams', SurveyCtrl]);
 
-function SurveyCtrl($scope, $location, DataService, Models){
+function SurveyCtrl($scope, $location, Models, $routeParams){
+    var _surveyId;
+    _surveyId=$routeParams.surveyId;
+    
+    init();
     
     
+    function init(){
+        $scope.currentSurvey = Models.Survey.get(_surveyId);
+    }
 }

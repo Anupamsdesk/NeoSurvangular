@@ -1,4 +1,4 @@
-angular.module('node4jsHttpApp').factory('Models', function(DataService, $q) {
+angular.module('node4jsHttpApp').factory('Models', ['GraphDBService','$q',function(DataService, $q) {
     Question = function(obj) {
         return {
             id : obj.id,
@@ -54,6 +54,18 @@ angular.module('node4jsHttpApp').factory('Models', function(DataService, $q) {
         });
         return deferred.promise;
     };
+    Survey.get = function(id){
+        var promise = DataService.getById(id);
+        var deferred = $q.defer();
+        promise.then(function(data) {
+            var survey=null;
+            data.forEach(function(value, index) {
+                survey=new Survey(value[0]);
+            });
+            deferred.resolve(survey);
+        });
+        return deferred.promise;
+    };
     
     Contact.getAll= function(){
         contacts=[];
@@ -70,4 +82,4 @@ angular.module('node4jsHttpApp').factory('Models', function(DataService, $q) {
         Contact: Contact
     };
 
-});
+}]);
