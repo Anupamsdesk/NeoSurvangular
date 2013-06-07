@@ -1,0 +1,14 @@
+
+<div>
+	<div class='accordion-heading {{className}}' ng-click='selected=!selected' style='font-size:larger'>
+		<a class='accordion-toggle'>{{heading | truncate:32}} 
+			<i class='icon-circle-arrow-down pull-right' ng-show='!selected'></i>
+			<i class='icon-circle-arrow-up pull-right' ng-show='selected'></i>
+		</a>
+	</div>
+	<div class='accordion-body' collapse='!selected'>
+		<div class="accordion-inner alert" ng-transclude></div>
+	</div>
+</div>
+
+

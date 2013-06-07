@@ -1,0 +1,58 @@
+<h3>Surveys</h3>
+<div class='row'>
+	<div class='span5'>
+			<div class="well"  style=''>
+				<span> <span class="dropdown"> <span class="btn dropdown-toggle"> Sort By<span class="caret"></span> </span>
+						<ul class="dropdown-menu">
+							<li ng-click='sort(0)'>
+								<a>Title</a>
+							</li>
+							<li ng-click='sort(1)'>
+								<a>Open date</a>
+							</li>
+							<li ng-click='sort(2)'>
+								<a>Close date</a>
+							</li>
+						</ul> </span> </span>
+				<span>
+					<input  style="margin-top: 2pt" type="text" class="search-query" placeholder="Search" ng-model='searchText' ng-change='runQuery()'>
+				</span>
+			</div>
+		<div class='well'>
+		<my-accordion-item ng-repeat='survey in surveys' heading="survey.title" index='0'>
+				<div>{{survey.title}}</div>
+				<div class='row' style='font-size:smaller'> 
+					<span class='span pull-left'>Opened: {{survey.openDate}}</span> 
+					<span class='span pull-right'>Closed: {{survey.closeDate}}</span> 
+				</div>
+				<div> 
+					<a class='btn btn-info' ng-click='viewSummary(survey.id)'>View Summary</a> 
+					<a class='btn btn-info' ng-click='participate(survey.id)'>Participate</a> 
+					<a class='btn btn-info' ng-click='edit(survey.id)'>Edit</a>
+				</div>
+		</my-accordion-item>
+		<div ng-show='showMessage' class='alert alert-error'>
+			{{message}}
+		</div>
+		</div>		
+	</div>
+	<div ngcloak class='span7'>
+		<div ng-show='showSurveyInfo' class='well'>
+			<h3 class='alert alert-info'>Survey Details:</h3>
+			<div class='well'>
+				<h4 class=''>&ldquo;{{selectedSurvey.title}}&rdquo;</h3>
+				<h5 class='row'>
+					<span class='span'>Participation: <span class='badge badge-important'>{{selectedSurvey.totalUsers}}</span></span>
+					<span class='span'>Status: <span class='badge badge-important'>{{selectedSurvey.status}}</span></span>
+				</h4>
+			</div>			
+			<h4>Questions</h4>			
+			<ul class='nav'>
+				<li  class='tabs' ng-repeat='question in selectedSurvey.questions'>
+					{{question.title}}
+					<span class='label label-info'>{{question.count}}</span>
+				</li>
+			</ul>				
+		</div>		 
+	</div>
+</div>

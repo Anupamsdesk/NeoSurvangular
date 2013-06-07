@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Neo4Js</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.googlecode.jslint4java.eclipse.jsLintBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.vjet.core.nature</nature>
+		<nature>org.nodeclipse.ui.NodeNature</nature>
+		<nature>com.googlecode.jslint4java.eclipse.jsLintNature</nature>
+	</natures>
+</projectDescription>
