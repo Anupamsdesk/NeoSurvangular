@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('node4jsHttpApp', ['ui.bootstrap','ui.bootstrap.collapse']).config(['$routeProvider',
-function($routeProvider) {
+angular.module('node4jsHttpApp', 
+['ui.bootstrap', 'ui.bootstrap.collapse','ngResource']).config(
+    ['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {
         templateUrl : 'views/main.html',
         controller : 'MainCtrl'
@@ -13,21 +14,22 @@ function($routeProvider) {
         controller : 'ContactsCtrl'
     }).when('/editSurvey/:surveyId', {
         templateUrl : 'views/surveyEdit.html',
-        controller : 'SurveyCtrl'
-    }).when('/participateSurvey/:surveyId', {
-        templateUrl : 'views/surveyParticipate.html',
-        //controller : 'ContactsCtrl'
+        controller : 'SurveyUpdateCtrl'
+    }).when('/conductSurvey/:surveyId', {
+        templateUrl : 'views/surveyConduct.html',
+        controller : 'SurveyConductCtrl'
     }).otherwise({
         redirectTo : '/'
     });
-}]).filter('truncate', function() { 
+}]).filter('truncate', function() {
     return function(text, value) {
-        value=value-3;
-        if (!value){
+        value = value - 3;
+        if (!value) {
             value = 12;
         }
-        if (text && text.length>value)
-            return text.substring(0, value)+"...";
-        else return text;
+        if (text && text.length > value)
+            return text.substring(0, value) + "...";
+        else
+            return text;
     };
 });

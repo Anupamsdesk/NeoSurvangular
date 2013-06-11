@@ -37,6 +37,14 @@
 		</div>		
 	</div>
 	<div ngcloak class='span7'>
+		
+		<div ng-show='!showSurveyInfo' class='hero-unit'>
+			<div class='well'><h2>Greetings User!</h2></div>
+			<div class='well'><div class='btn btn-success span4'><big>Create a new Survey</big></div></div>
+			
+			
+		</div>
+		
 		<div ng-show='showSurveyInfo' class='well'>
 			<h3 class='alert alert-info'>Survey Details:</h3>
 			<div class='well'>
@@ -50,7 +58,8 @@
 			<ul class='nav'>
 				<li  class='tabs' ng-repeat='question in selectedSurvey.questions'>
 					{{question.title}}
-					<span class='label label-info'>{{question.count}}</span>
+					<span class='label label-info'>{{question.type}}</span>
+					<span class='badge badge-info'>{{question.count}}</span>
 				</li>
 			</ul>				
 		</div>		 

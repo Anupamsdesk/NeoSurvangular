@@ -9,7 +9,7 @@
     <title>Neo-Survangular!</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <link rel='stylesheet' href='//netdna.bootstrapcdn.com/bootswatch/2.3.2/cyborg/bootstrap.min.css'><link>
+    <link rel='stylesheet' href='//netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css'><link>
     <!--//netdna.bootstrapcdn.com/bootswatch/2.3.2/simplex/bootstrap.min.css cyborg, slate, spacelab, spruce, united -->
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css styles/main.css -->
@@ -39,11 +39,15 @@
 								<a href="#/home">Home</a>
 							</li>
 							<li>
+								<a href="#/create">Create a Survey</a>
+							</li>
+							<li>
 								<a href="#/about">About</a>
 							</li>
 							<li>
 								<a href="#/contact">Contact</a>
 							</li>
+							
 						</ul>
 					</div>
 				</div>
@@ -53,21 +57,19 @@
     <div class="container" ng-view></div>
 
     <script src="components/angular/angular.js"></script>
-    <script src="components/angular-resource/angular-resource.js"></script>
-    <script src="components/angular-cookies/angular-cookies.js"></script>
-    <script src="components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="components/angular-resource/angular-resource.min.js"></script>
     <script src="components/ui-bootstrap-0.3.0.min.js"></script>
 	<script src="components/angular-ui/build/angular-ui.min.js"></script>
 	<script src='components/underscore/underscore-min.js'></script>
     
     <!-- build:js scripts/scripts.js -->
     <script src="scripts/app.js"></script>
-    <script src="scripts/Services/DataService.js"></script>
     <script src="scripts/Services/Models.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/survey.js"></script>
     <script src="scripts/controllers/contacts.js"></script>
     <script src="scripts/directives.js"></script>
+    
     <!-- endbuild -->
 
     

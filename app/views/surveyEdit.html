@@ -1,1 +1,31 @@
-<h1>Edit Survey</h1>
+<h2>Survey: {{currentSurvey.title}}</h2>
+
+<label>Title:</label>
+<input type="text" class='input span5' ng-model='currentSurvey.title' 
+	ng-change='changed()'/>
+
+<label>Open Date:</label>
+<input type='date' class='date' ng-model='currentSurvey.openDate' 
+	ng-change='changed()'/>
+<label>Close Date:</label>
+<input type='date' class='date' ng-model='currentSurvey.closeDate' 
+	ng-change='changed()'/>
+<hr/>
+<div class='alert alert-info'>{{message}}</div>
+
+<div class='btn btn' ng-show='dirty' ng-click='save()'>
+	Save Changes
+</div>
+<div class='btn btn-info' ng-show='dirty' ng-click='reload()'>
+	Discard Changes
+</div>
+<hr/>
+<h3>Questions:</h3>
+<ul>
+	<li ng-repeat='question in questions'>
+		<div>
+		<label>Title: {{question.title}}</label> 	
+		<label>Type: {{question.type}}</label>
+		</div>
+	</li>
+</ul>

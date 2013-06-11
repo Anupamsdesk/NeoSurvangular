@@ -1,0 +1,20 @@
+
+<h4>{{currentSurvey.title}}</h4>
+
+<hr/>
+
+<div class='well'>
+<ul>
+	<li ng-repeat='question in questions' survey-question model='question' 
+		index='$index'>
+	</li>
+</ul>
+
+<div class='text-center'>  
+	<button class='btn btn-primary btn-large'>Submit</button>
+	<button class='btn btn-cancel btn-large'>Cancel</button>
+</div>
+
+</div>
+
+<div class='alert alert-info'>{{message}}</div>
